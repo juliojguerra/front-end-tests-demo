@@ -1,13 +1,18 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-function UserForm({ onUserAdd }) {
+interface UserFormProps {
+  onUserAdd?: (userData: { name: string; email: string }) => void;
+}
+
+function UserForm({ onUserAdd = () => {} }: UserFormProps) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
 
-  const handleSubmit = (event: { preventDefault: () => void }) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    onUserAdd({ name, email });
+    // Use optional chaining to call onUserAdd if it's provided
+    onUserAdd?.({ name, email });
   };
 
   return (
