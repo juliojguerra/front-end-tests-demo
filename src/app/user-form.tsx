@@ -1,9 +1,8 @@
-'use client';
-import { useState } from 'react';
+import { useState } from "react";
 
 function UserForm({ onUserAdd }) {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
@@ -12,24 +11,26 @@ function UserForm({ onUserAdd }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="text-black">
       <div>
-        <label> Name </label>
+        <label className="text-white"> Name </label>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="text-black"
         />
       </div>
       <div>
-        <label>Email</label>
+        <label className="text-white">Email</label>
         <input
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="text-black"
         />
       </div>
-      <button>Add User</button>
+      <button className="text-white">Add User</button>
     </form>
   );
 }
