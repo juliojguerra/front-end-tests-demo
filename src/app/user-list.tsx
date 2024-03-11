@@ -4,11 +4,11 @@ interface User {
 }
 
 interface UserListProps {
-  users: User[];
+  users?: User[];
 }
 
 function UserList({ users }: UserListProps) {
-  const renderedUsers = users.map((user) => {
+  const renderedUsers = users?.map((user) => {
     return (
       <tr key={user.name}>
         <td>{user.name}</td>
@@ -25,7 +25,7 @@ function UserList({ users }: UserListProps) {
           <th>Email</th>
         </tr>
       </thead>
-      <tbody>{renderedUsers}</tbody>
+      <tbody data-testid="users">{renderedUsers}</tbody>
     </table>
   );
 }

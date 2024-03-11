@@ -13,13 +13,20 @@ function UserForm({ onUserAdd = () => {} }: UserFormProps) {
 
     // Use optional chaining to call onUserAdd if it's provided
     onUserAdd?.({ name, email });
+
+    setEmail("");
+    setName("");
   };
 
   return (
     <form onSubmit={handleSubmit} className="text-black">
       <div>
-        <label className="text-white"> Name </label>
+        <label htmlFor="name" className="text-white">
+          {" "}
+          Name{" "}
+        </label>
         <input
+          id="name"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -27,8 +34,11 @@ function UserForm({ onUserAdd = () => {} }: UserFormProps) {
         />
       </div>
       <div>
-        <label className="text-white">Email</label>
+        <label htmlFor="email" className="text-white">
+          Enter Email
+        </label>
         <input
+          id="email"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
